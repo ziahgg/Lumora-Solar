@@ -1,0 +1,163 @@
+@import 'tailwindcss';
+
+/* Design tokens — Figma variables used by the Lumora Solar homepage (desktop 110:2706, mobile 110:3051) */
+@theme {
+  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+
+  --color-navy-900: #0a1a2f;
+  --color-navy-800: #12263f;
+  --color-night: #071322;
+  --color-solar-500: #f6b800;
+  --color-solar-100: #fff3cc;
+  --color-line: #e2e7ee;
+  --color-surface: #f4f6f9;
+  --color-body: #46546a;
+  --color-muted: #7a8799;
+  --color-ink-80: #3b3b3b;
+  --color-stone: #6f6b65;
+  --color-leaf-100: #e2f3ea;
+  --color-leaf-600: #1f8f5c;
+
+  --shadow-card: 0 24px 48px 0 rgb(10 26 46 / 0.22);
+  --shadow-form: 0 24px 48px 0 rgb(10 26 46 / 0.25);
+  --shadow-note: 0 16px 40px 0 rgb(10 26 46 / 0.18);
+}
+
+/* Text styles — Figma letter-spacing % maps 1:1 to em. Mobile values first, desktop from lg. */
+@utility t-display {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 44px;
+  letter-spacing: -0.03em;
+  @media (width >= 64rem) {
+    font-size: 56px;
+    line-height: 60px;
+  }
+  @media (width >= 80rem) {
+    font-size: clamp(64px, 5.28vw, 76px);
+    line-height: 1.0527;
+  }
+}
+@utility t-h2 {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 38px;
+  letter-spacing: -0.025em;
+  @media (width >= 64rem) {
+    font-size: 52px;
+    line-height: 58px;
+  }
+}
+@utility t-h3 {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  @media (width >= 64rem) {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+@utility t-h4 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: -0.015em;
+  @media (width >= 64rem) {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+@utility t-lead {
+  font-size: 16px;
+  line-height: 25px;
+  @media (width >= 64rem) {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
+@utility t-body {
+  font-size: 16px;
+  line-height: 25px;
+}
+@utility t-small {
+  font-size: 14px;
+  line-height: 21px;
+}
+@utility t-label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+}
+@utility t-eyebrow {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+@utility t-button {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+}
+@utility t-number {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: -0.02em;
+  @media (width >= 64rem) {
+    font-size: 40px;
+    line-height: 44px;
+  }
+}
+
+/* Page gutter + 1280px content column (Figma: 80px desktop, 20px mobile) */
+@utility container-page {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 20px;
+  @media (width >= 48rem) {
+    padding-inline: 40px;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 80px;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-white font-sans text-navy-900 antialiased;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+  }
+  [id] {
+    scroll-margin-top: 16px;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-solar-500);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
